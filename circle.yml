@@ -4,4 +4,3 @@ dependencies:
 test:
   override:
     - python /home/ubuntu/django_test/hello/manage.py test
-    - python /home/ubuntu/django_test/hello/manage.py runserver
