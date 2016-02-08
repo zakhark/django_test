@@ -1,0 +1,23 @@
+{% extends "dashboard/master.html" %}
+{% load humanize %}
+{% block title%}Add new job{% endblock %}
+{% block content %}
+<table>
+		<tr><th>Job ID</th><td>{{ item.id }}</td></tr>
+		<tr><th>Job name</th><td>{{ item.name }}</td></tr>
+		<tr><th>Frequency</th><td>{{ item.frequency }}</td></tr>
+		<tr><th>Last run time</th><td>{{ item.run_time }}</td></tr>
+		<tr><th>SLA</th><td>{{ item.sla }}</td></tr>
+		<tr><th>Updated on</th><td>{{ item.updated_on }}</td></tr>
+</table>
+
+<form action="{% url 'dashboard:submit' %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+</form>
+
+{% endblock %}

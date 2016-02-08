@@ -1,0 +1,31 @@
+{% extends "dashboard/master.html" %}
+{% load humanize %}
+
+{% block content %}
+{% if dash_list %}
+        <table>
+          <tr>
+            <th>Name</th>
+	    <th>Update Time</th>
+            <th>Run Time</th>
+            <th>Frequency</th>
+            <th>SLA</th>
+            <th>Status</th>
+	    <th>TTT</th>
+          </tr>
+	{% for dash in dash_list %}
+	<tr class={% if dash.status == "OK" %}'green'{% elif dash.status == "WARNING" %}'yellow'{% else %}'red'{% endif %}>
+	    <td>{{dash.name}}</td>
+	    <td>{{dash.updated_on}}</td>
+	    <td>{{dash.run_time}}</td>
+	    <td>{{dash.frequency}}</td>
+	    <td>{{dash.sla}}</td>
+	    <td>{{dash.status}}</td>
+	    <td>{% if dash.run_time <= dash.sla %}'green'{% else %}'red'{% endif %}</td>
+	  </tr>
+	{% endfor %}
+	</table>
+{% else %}
+	:-(
+{% endif %}
+{% endblock %}
