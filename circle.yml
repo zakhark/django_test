@@ -3,4 +3,5 @@ dependencies:
     - sudo pip install Django==1.8.9
 test:
   override:
-    - python manage.py runserver
+    - python /home/ubuntu/django_test/hello/manage.py test
+    - python /home/ubuntu/django_test/hello/manage.py runserver
