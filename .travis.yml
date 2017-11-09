@@ -1,0 +1,14 @@
+os: osx
+osx_image: xcode8.3
+language: python
+
+before_install:
+  - brew update
+  - brew install wget
+
+script:
+  - curl -L https://canihazip.com/s
+  - df -h
+  - uptime
+  - pwd
+  - ls -la
